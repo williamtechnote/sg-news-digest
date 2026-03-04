@@ -1,0 +1,2 @@
+SOURCE_NAME = "cna"
+DISPLAY_NAME = "CNA"

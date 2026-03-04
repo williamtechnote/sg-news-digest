@@ -1,0 +1,18 @@
+[project]
+name = "sg-news-digest"
+version = "0.1.0"
+description = "Codex skill for SG + global top news semantic digest"
+requires-python = ">=3.9"
+dependencies = [
+  "requests>=2.32.0",
+  "feedparser>=6.0.0",
+  "python-dateutil>=2.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"

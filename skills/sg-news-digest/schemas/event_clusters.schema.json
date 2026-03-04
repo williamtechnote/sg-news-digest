@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["clusters", "insights", "takeaways"],
+  "properties": {
+    "clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_title",
+          "category",
+          "subcategory",
+          "importance",
+          "summary_cn",
+          "impact_cn",
+          "risk_opportunity_cn",
+          "source_urls",
+          "source_names",
+          "item_ids"
+        ],
+        "properties": {
+          "event_title": {"type": "string"},
+          "category": {"type": "string"},
+          "subcategory": {"type": "string"},
+          "importance": {"type": "number"},
+          "summary_cn": {"type": "string"},
+          "impact_cn": {"type": "string"},
+          "risk_opportunity_cn": {"type": "string"},
+          "source_urls": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "source_names": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "item_ids": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "insights": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "takeaways": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "additionalProperties": false
+}
