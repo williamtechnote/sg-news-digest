@@ -2,6 +2,15 @@
 
 一个可被 OpenClaw 定时调用的 Codex Skill：从 Google News、The Straits Times、CNA、联合早报获取当天新闻，进行语义去重、归类和分析，输出中文高价值日报（Markdown）。
 
+## 安装方式（推荐）
+
+将仓库直接 clone 到你的 Codex skills 目录，仓库根目录就是 skill 根目录：
+
+```bash
+git clone https://github.com/williamtechnote/sg-news-digest.git ~/.codex/skills/sg-news-digest
+cd ~/.codex/skills/sg-news-digest
+```
+
 ## 目标
 
 - 抓取当天新闻（新加坡 + 国际重大新闻）
@@ -23,7 +32,7 @@
 - The Straits Times RSS
 - 联合早报（默认使用 Google News `site:zaobao.com.sg` 回退源）
 
-配置文件：`skills/sg-news-digest/config/defaults.env`
+配置文件：`config/defaults.env`
 
 ## 输出格式
 
@@ -52,13 +61,13 @@ python3 -m venv .venv
 ### 2. 运行测试
 
 ```bash
-.venv/bin/pytest skills/sg-news-digest/tests -q
+.venv/bin/pytest tests -q
 ```
 
 ### 3. 生成日报
 
 ```bash
-bash skills/sg-news-digest/scripts/run.sh --date 2026-03-04 --top 5
+bash scripts/run.sh --date 2026-03-04 --top 5
 ```
 
 常用参数：
@@ -75,14 +84,14 @@ bash skills/sg-news-digest/scripts/run.sh --date 2026-03-04 --top 5
 1. 在 OpenClaw 中配置 cron 定时执行：
 
 ```bash
-bash /path/to/sg-news-digest/skills/sg-news-digest/scripts/run.sh --top 5
+bash /path/to/sg-news-digest/scripts/run.sh --top 5
 ```
 
 2. 将命令 `stdout` 作为消息正文转发到 Telegram。
 
 ## 配置项（关键）
 
-位于 `skills/sg-news-digest/config/defaults.env`：
+位于 `config/defaults.env`：
 
 - `TIMEZONE`（默认 `Asia/Singapore`）
 - `TOP_N`（默认 `5`）
@@ -100,14 +109,13 @@ bash /path/to/sg-news-digest/skills/sg-news-digest/scripts/run.sh --top 5
 ## 目录结构
 
 ```text
-skills/sg-news-digest/
-  SKILL.md
-  config/defaults.env
-  schemas/event_clusters.schema.json
-  scripts/run.sh
-  scripts/pipeline/*.py
-  scripts/sources/*.py
-  tests/*.py
+SKILL.md
+config/defaults.env
+schemas/event_clusters.schema.json
+scripts/run.sh
+scripts/pipeline/*.py
+scripts/sources/*.py
+tests/*.py
 docs/plans/
 ```
 
